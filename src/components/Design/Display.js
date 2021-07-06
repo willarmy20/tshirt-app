@@ -3,7 +3,7 @@ import { fabric } from 'fabric';
 import '../Design/Display.css'
 
 
-function Display() {
+function Display({display}) {
     // const [canvas, setCanvas] = useState('');
     // const initCanvas = () => (
     //     new fabric.Canvas('canvas', {
@@ -18,7 +18,7 @@ function Display() {
     
     return (
         <div className='imgtshirt h-58 p-8'>
-            <img className='img responsive' src="https://res.cloudinary.com/dkkgmzpqd/image/upload/v1545217305/T-shirt%20Images/black.png" 
+            <img className='img responsive' src={`https://res.cloudinary.com/dkkgmzpqd/image/upload/v1545217305/T-shirt%20Images/${display.tshirtColor}`} 
             alt="img-tshirt"
             />
             <canvas id="canvas" />
