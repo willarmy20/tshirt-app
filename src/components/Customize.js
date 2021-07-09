@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Display from './Design/Display'
 import Setting from './Design/Setting';
 import { storage } from '../config/firebaseConfig';
-import { saveDesign} from '../action/saveTshirt'
+import { saveDesign} from '../action/saveDesign'
 import { connect } from 'react-redux';
 
 
@@ -14,10 +14,10 @@ class Customize extends Component {
         this.state = {
            tshirtColor: 'black',
            memeImg: 'http://via.placeholder.com/400x300',
-           url: '',
-           
+           url: ''
         }
         this.handleImageUpload = this.handleImageUpload.bind(this)
+        this.handleSaveDesign = this.handleSaveDesign.bind(this)
     }
 
     handleTshirtColor = (e) => {
@@ -51,28 +51,44 @@ class Customize extends Component {
     }
 
     handleSaveDesign = (e) =>{
-        if(e.target.id === 'saveDesign'){
-            this.props.saveDesign(this.state)
+        // if(e.target.id === 'saveDesign'){
+        //     this.props.saveDesign(this.state)
+        // }
+
+        const design = {
+            tshirtColor: this.state.tshirtColor,
+            memeImg: this.state.memeImg,
+            url: this.state.url
         }
+
+        console.log("YO: ", design);
+
+        this.props.saveDesign(design);
     }
-
-    
-
 
     render() {
-    return (
-            <div className ='grid grid-cols-2 place-items-center h-48'>
-                <Display  shirtImage={this.state.memeImg} display={this.state}  />
-                <Setting 
-                color={this.handleTshirtColor}
-                uploadImage={this.handleImageUpload}
-                saveDesign={this.handleSaveDesign}
-                />
-            </div>
+        return (
+            <>
+                <div className ='grid grid-cols-2 place-items-center h-48'>
+                    <Display  shirtImage={this.state.memeImg} display={this.state}  />
+                    <Setting 
+                    color={this.handleTshirtColor}
+                    uploadImage={this.handleImageUpload}
+                    // saveDesign={this.handleSaveDesign}
+                    />
+                </div>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                <br></br><br></br><br></br><br></br><br></br>
+                <button id='handleSaveDesign' onClick={this.handleSaveDesign} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded jusify-content-center'> <a href='/order'>Save</a> </button>
+            </>
         )
     }
-
-
 }
 
 const mapDispatchToProps = (dispatch) =>{
@@ -80,4 +96,5 @@ const mapDispatchToProps = (dispatch) =>{
         saveDesign: (design) => dispatch(saveDesign(design))
     }
 }
+
 export default connect(null, mapDispatchToProps)(Customize)

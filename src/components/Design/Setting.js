@@ -24,7 +24,7 @@ function Setting({color, uploadImage, saveDesign}) {
                 <input type='file' onChange={(e) => uploadImage(e)} className='form-controle-file mb-2' />
             </div>
             <hr />
-            <button id='saveDesign' onClick={saveDesign} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded jusify-content-center'> <a href='/order'>Save</a> </button>
+            
         </div>
     )
 }

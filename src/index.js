@@ -13,16 +13,17 @@ import{
   Link
 } from "react-router-dom";
 
-const store = createStore(mainReducer, applyMiddleware(thunk));
+// const store = createStore(mainReducer, applyMiddleware(thunk));
+const store = createStore(mainReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Provider store = {store}>
-      <App />
-    </Provider>
-    </Router>
-  </React.StrictMode>,
+  <Provider store = {store}>
+    <React.StrictMode>
+      <Router>
+        <App />
+      </Router>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

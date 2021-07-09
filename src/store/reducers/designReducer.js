@@ -1,16 +1,20 @@
-const addorder = (order, state) =>{
-    const newOrders = [...state.orders, order];
-    return{
-        ...state,
-        order:newOrders
+import { SAVE_DESIGN } from '../../action/type'
+
+const initialState = {
+    order: []
+}
+
+const designReducer = (state = initialState, action) => {
+    switch(action.type){
+        case SAVE_DESIGN:
+            // return addOrder(acton.payload, state);
+            return {
+                ...state,
+                order: [...state.order, action.payload]
+            }
+            
+        default: return state
     }
 }
 
-
-const designReducer = (state, action) => {
-    switch(action.type){
-        case 'ADD_ORDER':
-            return addOrder(acton.payload, state);
-}
-
-export default designReducer
+export default designReducer;
