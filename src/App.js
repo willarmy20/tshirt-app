@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
 import Customize from './components/Customize';
-import Contact from './components/Contact';
+import Order from './components/Order';
 import Dropdown from './components/Dropdown';
 import fabricjstest from './components/fabricjstest';
 
@@ -39,7 +39,7 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path='/about' component={About} />
         <Route path='/customize' component={Customize} />
-        <Route path='/contact' component={Contact} />
+        <Route path='/order' component={Order} />
         <Route path='/fabricjstest' component={fabricjstest} />
       </Switch>
     </>
