@@ -6,9 +6,9 @@ const saveShirt=(data) => {
 
 }
 
-function Setting({color, uploadImage, saveDesign}) {
+function Setting({color, uploadImage, handleSaveDesign}) {
     return (
-        <div>
+        <div id='my-node bg-yellow-500'>
             <h3 className='text-center '>Setting</h3>
             <h2>Change T-shirt Color</h2>
             <div className='tshirt-color'>
@@ -24,7 +24,12 @@ function Setting({color, uploadImage, saveDesign}) {
                 <input type='file' onChange={(e) => uploadImage(e)} className='form-controle-file mb-2' />
             </div>
             <hr />
-            <button id='saveDesign' onClick={saveDesign} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded jusify-content-center'> <a href='/order'>Save</a> </button>
+            <h3>Tshirt Price:$20</h3>
+            <hr />
+            <hr />
+            <div className='py-2'>
+            <button  id='handleSaveDesign' onClick={handleSaveDesign} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded jusify-content-center'> Save</button>
+            </div>
         </div>
     )
 }

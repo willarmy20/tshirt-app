@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 
 
 
+
 class Customize extends Component {
     constructor(props) {
         super(props)
@@ -15,6 +16,7 @@ class Customize extends Component {
            tshirtColor: 'black',
            memeImg: 'http://via.placeholder.com/400x300',
            url: '',
+           userUrl: ''
            
         }
         this.handleImageUpload = this.handleImageUpload.bind(this)
@@ -44,6 +46,7 @@ class Customize extends Component {
             () => {
                 storage.ref('images').child(image.name).getDownloadURL().then(url =>{
                     this.setState({url});
+                    console.log('user', this.state.url)
                 })
             }
             )
@@ -51,12 +54,22 @@ class Customize extends Component {
     }
 
     handleSaveDesign = (e) =>{
-        if(e.target.id === 'saveDesign'){
-            this.props.saveDesign(this.state)
-        }
-    }
+        // if(e.target.id === 'saveDesign'){
+        //     this.props.saveDesign(this.state)
+        // }
 
-    
+        const design = {
+            tshirtColor:"https://res.cloudinary.com/dkkgmzpqd/image/upload/v1545217305/T-shirt%20Images/" + this.state.tshirtColor,
+            memeImg: this.state.memeImg,
+            url: this.state.url
+        }
+
+        console.log("YO: Im saving", design);
+
+        this.props.saveDesign(design);
+        this.props.history.push('/order');
+    };
+
 
 
     render() {
@@ -66,13 +79,11 @@ class Customize extends Component {
                 <Setting 
                 color={this.handleTshirtColor}
                 uploadImage={this.handleImageUpload}
-                saveDesign={this.handleSaveDesign}
+                handleSaveDesign={this.handleSaveDesign}
                 />
             </div>
         )
     }
-
-
 }
 
 const mapDispatchToProps = (dispatch) =>{
@@ -80,4 +91,6 @@ const mapDispatchToProps = (dispatch) =>{
         saveDesign: (design) => dispatch(saveDesign(design))
     }
 }
+
+
 export default connect(null, mapDispatchToProps)(Customize)

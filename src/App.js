@@ -6,7 +6,9 @@ import About from './components/About';
 import Customize from './components/Customize';
 import Order from './components/Order';
 import Dropdown from './components/Dropdown';
-import fabricjstest from './components/fabricjstest';
+import StripContainer from './components/StripContainer';
+
+
 
 
 
@@ -40,7 +42,7 @@ function App() {
         <Route path='/about' component={About} />
         <Route path='/customize' component={Customize} />
         <Route path='/order' component={Order} />
-        <Route path='/fabricjstest' component={fabricjstest} />
+        <Route path='/payment' component={StripContainer} />
       </Switch>
     </>
   );

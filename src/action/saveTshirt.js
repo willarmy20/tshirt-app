@@ -1,5 +1,12 @@
+import { SAVE_DESIGN } from './type';
+import { v4 as uuidv4 } from 'uuid';
+
 export const saveDesign = (design) => {
-    return (dispatch, getState) => {
-        dispatch({type: 'SAVE_DESIGN', design})
+    return {
+        type: SAVE_DESIGN,
+        payload: {
+            ...design,
+            id: uuidv4()
+        }
     }
 }

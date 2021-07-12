@@ -24,3 +24,14 @@
     width: 15%;
     height: 15%;
 }
+
+.ordershirt{
+    position:relative;
+}
+
+.shirtDesign{
+    position: absolute;
+    /* height: 15%; */
+    top: 300px;
+    left: 215px;
+}
